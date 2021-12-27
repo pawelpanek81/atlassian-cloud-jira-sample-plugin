@@ -1,0 +1,27 @@
+{
+	"key": "${addon.key}",
+	"baseUrl": "${addon.base-url}",
+	"name": "My add-on",
+	"authentication": {
+		"type": "jwt"
+	},
+	"lifecycle": {
+		"installed": "/installed",
+		"uninstalled": "/uninstalled"
+	},
+	"scopes": [
+		"read", "write"
+	],
+	"modules": {
+		"generalPages": [
+			{
+				"url": "views/helloworld.html?username=Pawel",
+				"key": "hello-world",
+				"location": "system.top.navigation.bar",
+				"name": {
+					"value": "Greeting"
+				}
+			}
+		]
+	}
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<script th:src="@{${atlassianConnectAllJsUrl}}" type="text/javascript"></script>
+	<meta name="token" th:content="${atlassianConnectToken}"/>
+	<meta name="user-account-id" th:content="${#authentication.principal.userAccountId.get()}"/>
+</head>
+<body>
+<h1>Hello <span th:text="${userName}"></span></h1>
+<div>Hello, <span th:text="fa">User</span>!</div>
+<button onclick="ajax()">AJAX Authenticated call</button>
+<script type="text/javascript">
+	const ajax = function() {
+		console.log(window.parent);
+
+		const responsePromise = fetch('https://92ac-91-234-128-213.ngrok.io/api/issue/TEST-1', {
+			headers: {
+				"Authorization": "JWT " + document.querySelector('meta[name=token]').content
+			}
+		});
+		responsePromise
+			.then(response => Promise.all([response.status,response.text()]))
+			.then(res => console.log(res));
+	}
+</script>
+</body>
+</html>
