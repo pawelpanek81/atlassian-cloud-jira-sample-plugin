@@ -94,9 +94,19 @@
                         </goals>
                         <phase>initialize</phase>
                         <configuration>
-                            <nodeVersion>v14.15.4</nodeVersion>
-                            <npmVersion>8.3.0</npmVersion>
+                            <nodeVersion>v16.14.2</nodeVersion>
+                            <npmVersion>8.5.0</npmVersion>
                         </configuration>
+                    </execution>
+                    <execution>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>install</arguments>
+                        </configuration>
+                        <phase>generate-resources</phase>
                     </execution>
                     <execution>
                         <id>npm run build (compile)</id>

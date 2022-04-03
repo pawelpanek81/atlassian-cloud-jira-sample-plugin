@@ -1,0 +1,10 @@
+v0.3
+removed <meta name="user-account-id" th:content="${#authentication.principal.userAccountId.get()}"/>
+added meta[name="baseUrl"]
+updated hello.html example view
+added react view (views/react/counter-app.html) on system.top.navigation.bar
+added docs/
+
+v0.2 (rev d6149741fcf7c04ae9e40ff8b2e45f8108fd446a) Added Webpack, React, Typescript support
+
+v0.1 (rev 2dc8854b901b2d9483b2e8e0gi266012bdfd933568) Added Spring backend

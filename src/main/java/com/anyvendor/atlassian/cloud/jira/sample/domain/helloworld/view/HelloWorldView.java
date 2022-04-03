@@ -28,4 +28,13 @@ public class HelloWorldView {
 		return model;
 	}
 
+	@RequestMapping(value = "views/react/counter-app.html", method = RequestMethod.GET)
+	public ModelAndView reactCounterApp() {
+		ModelAndView model = new ModelAndView();
+		model.setViewName("react/app/counter-app.html");
+		model.addObject("title", "Counter App");
+		model.addObject("script", "/resources/counter.bundle.js");
+		return model;
+	}
+
 }

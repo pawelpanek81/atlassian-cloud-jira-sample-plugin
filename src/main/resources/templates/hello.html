@@ -3,24 +3,33 @@
 <head>
 	<script th:src="@{${atlassianConnectAllJsUrl}}" type="text/javascript"></script>
 	<meta name="token" th:content="${atlassianConnectToken}"/>
-	<meta name="user-account-id" th:content="${#authentication.principal.userAccountId.get()}"/>
+	<meta name="baseUrl" th:content="${@environment.getProperty('addon.base-url')}"/>
 </head>
 <body>
 <h1>Hello <span th:text="${userName}"></span></h1>
-<div>Hello, <span th:text="fa">User</span>!</div>
+<div>
+	<span>Issue Key:</span><input id="issue-key" value="TEST-1"/>
+</div>
 <button onclick="ajax()">AJAX Authenticated call</button>
+<div id="response">...</div>
 <script type="text/javascript">
+	const getBaseUrl = () => {
+		return document.querySelector('meta[name="baseUrl"]').content;
+	};
 	const ajax = function() {
-		console.log(window.parent);
-
-		const responsePromise = fetch('https://92ac-91-234-128-213.ngrok.io/api/issue/TEST-1', {
+		const baseUrl = getBaseUrl();
+		const issueKey = document.getElementById("issue-key").value;
+		const responsePromise = fetch(`${baseUrl}/api/issue/${issueKey}`, {
 			headers: {
 				"Authorization": "JWT " + document.querySelector('meta[name=token]').content
 			}
 		});
 		responsePromise
 			.then(response => Promise.all([response.status,response.text()]))
-			.then(res => console.log(res));
+			.then(res => {
+				console.log(res);
+				document.getElementById("response").innerText=res;
+			});
 	}
 </script>
 </body>

@@ -2,6 +2,11 @@
 	"key": "${addon.key}",
 	"baseUrl": "${addon.base-url}",
 	"name": "My add-on",
+	"description": "Sample addon",
+	"vendor": {
+		"name": "pawelpanek81 & maciej-plonka",
+		"url": "https://github.com/pawelpanek81/atlassian-cloud-jira-sample-plugin"
+	},
 	"authentication": {
 		"type": "jwt"
 	},
@@ -19,7 +24,15 @@
 				"key": "hello-world",
 				"location": "system.top.navigation.bar",
 				"name": {
-					"value": "Greeting"
+					"value": "Sample-App Greeting"
+				}
+			},
+			{
+				"url": "views/react/counter-app.html",
+				"key": "hello-world-react",
+				"location": "system.top.navigation.bar",
+				"name": {
+					"value": "Sample-App React Counter"
 				}
 			}
 		]
